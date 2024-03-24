@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.resolve.compatibility
+
 /*
  * Copyright 2020 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
@@ -18,10 +20,22 @@ android {
         applicationId = "dev.icerock.moko.samples.socketio"
 
         versionCode = 1
-        versionName = "0.3.1"
+        versionName = "0.2.0"
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlin {
+        jvmToolchain(17)
     }
 
     buildTypes {
@@ -35,19 +49,8 @@ android {
         }
     }
 
-    compileOptions {
-        targetCompatibility = JavaVersion.VERSION_11
-        sourceCompatibility = JavaVersion.VERSION_11
-    }
-
-    kotlin {
-        jvmToolchain(11)
-    }
-
     packaging {
-        resources {
-            excludes += "META-INF/*.kotlin_module"
-        }
+        resources.excludes.add("META-INF/*.kotlin_module")
     }
 }
 

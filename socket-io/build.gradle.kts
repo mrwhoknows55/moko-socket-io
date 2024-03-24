@@ -18,14 +18,13 @@ group = "dev.icerock.moko"
 version = libs.versions.mokoSocketIoVersion.get()
 
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
     androidTarget {
         publishLibraryVariants("release", "debug")
     }
-    ios()
+    iosArm64()
     iosSimulatorArm64()
     jvm()
-
     sourceSets {
         val commonMain by getting
 
@@ -39,11 +38,6 @@ kotlin {
 
         val jvmMain by getting {
             dependsOn(commonJvm)
-        }
-
-        val iosMain by getting
-        val iosSimulatorArm64Main by getting {
-            dependsOn(iosMain)
         }
     }
 }

@@ -21,12 +21,7 @@ allprojects {
     apply(plugin = "io.gitlab.arturbosch.detekt")
 
     configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
-        input.setFrom(
-            "src/commonMain/kotlin",
-            "src/androidMain/kotlin",
-            "src/iosMain/kotlin",
-            "src/commonJvm/kotlin"
-        )
+        input.setFrom("src/commonMain/kotlin", "src/androidMain/kotlin", "src/iosMain/kotlin", "src/commonJvm/kotlin")
     }
 
     dependencies {
@@ -41,11 +36,15 @@ allprojects {
                 minSdk = libs.versions.minSdk.get().toInt()
                 testOptions.targetSdk = libs.versions.targetSdk.get().toInt()
             }
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_17
+                targetCompatibility = JavaVersion.VERSION_17
+            }
         }
     }
 }
 
 tasks.register("clean", Delete::class).configure {
     group = "build"
-    delete(layout.buildDirectory)
+    delete(rootProject.buildDir)
 }

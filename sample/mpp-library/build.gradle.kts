@@ -11,9 +11,10 @@ plugins {
 }
 
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
+
     androidTarget()
-    ios()
+    iosArm64()
     iosSimulatorArm64()
 }
 
