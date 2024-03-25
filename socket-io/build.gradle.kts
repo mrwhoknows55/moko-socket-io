@@ -56,6 +56,9 @@ dependencies {
     }
     "jvmMainImplementation"(libs.socketIo)
 }
+android {
+    namespace = "dev.icerock.moko.socket"
+}
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")

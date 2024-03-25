@@ -20,6 +20,9 @@ dependencies {
     commonMainImplementation(libs.serialization)
     commonMainApi(projects.socketIo)
 }
+android {
+    namespace = "com.icerockdev.library"
+}
 
 framework {
     export(projects.socketIo)

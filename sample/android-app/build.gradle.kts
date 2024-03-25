@@ -45,6 +45,7 @@ android {
     packagingOptions {
         exclude("META-INF/*.kotlin_module")
     }
+    namespace = "com.icerockdev"
 }
 
 dependencies {
