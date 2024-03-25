@@ -30,11 +30,11 @@ allprojects {
 
     plugins.withId("com.android.library") {
         configure<com.android.build.gradle.LibraryExtension> {
-            compileSdkVersion(libs.versions.compileSdk.get().toInt())
+            compileSdk = libs.versions.compileSdk.get().toInt()
 
             defaultConfig {
-                minSdkVersion(libs.versions.minSdk.get().toInt())
-                targetSdkVersion(libs.versions.targetSdk.get().toInt())
+                minSdk = libs.versions.minSdk.get().toInt()
+                targetSdk = libs.versions.targetSdk.get().toInt()
             }
         }
     }

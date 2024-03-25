@@ -18,6 +18,7 @@ group = "dev.icerock.moko"
 version = libs.versions.mokoSocketIoVersion.get()
 
 kotlin {
+    jvmToolchain(8)
     android {
         publishLibraryVariants("release", "debug")
     }

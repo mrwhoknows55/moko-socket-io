@@ -8,15 +8,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion(libs.versions.compileSdk.get().toInt())
-
-    dexOptions {
-        javaMaxHeapSize = "2g"
-    }
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdkVersion(libs.versions.minSdk.get().toInt())
-        targetSdkVersion(libs.versions.targetSdk.get().toInt())
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
 
         applicationId = "dev.icerock.moko.samples.socketio"
 
@@ -36,6 +32,14 @@ android {
             isDebuggable = true
             applicationIdSuffix = ".debug"
         }
+    }
+
+    compileOptions {
+        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     packagingOptions {
