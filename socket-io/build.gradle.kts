@@ -22,7 +22,7 @@ kotlin {
     androidTarget {
         publishLibraryVariants("release", "debug")
     }
-    iosArm64()
+    ios()
     iosSimulatorArm64()
     jvm()
     sourceSets {
@@ -39,6 +39,13 @@ kotlin {
         val jvmMain by getting {
             dependsOn(commonJvm)
         }
+
+        val iosSimulatorArm64Main by getting
+        val iosMain by getting {
+            dependsOn(commonMain)
+            iosSimulatorArm64Main.dependsOn(this)
+        }
+
     }
 }
 

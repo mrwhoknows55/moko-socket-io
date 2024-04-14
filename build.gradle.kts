@@ -21,7 +21,7 @@ allprojects {
     apply(plugin = "io.gitlab.arturbosch.detekt")
 
     configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
-        input.setFrom("src/commonMain/kotlin", "src/androidMain/kotlin", "src/iosMain/kotlin", "src/commonJvm/kotlin")
+        source.setFrom("src/commonMain/kotlin", "src/androidMain/kotlin", "src/iosMain/kotlin", "src/commonJvm/kotlin")
     }
 
     dependencies {
@@ -46,5 +46,5 @@ allprojects {
 
 tasks.register("clean", Delete::class).configure {
     group = "build"
-    delete(rootProject.buildDir)
+    delete(layout.buildDirectory)
 }

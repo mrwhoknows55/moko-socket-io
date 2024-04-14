@@ -22,21 +22,24 @@ actual class Socket actual constructor(
 
     init {
 
-        socketIo = IO.socket(endpoint, IO.Options().apply {
-            transports = config?.transport?.let {
-                when (it) {
-                    SocketOptions.Transport.DEFAULT -> return@let null
-                    SocketOptions.Transport.WEBSOCKET -> return@let arrayOf(WebSocket.NAME)
-                    SocketOptions.Transport.POLLING -> return@let arrayOf(Polling.NAME)
+        socketIo = IO.socket(
+            endpoint,
+            IO.Options().apply {
+                transports = config?.transport?.let {
+                    when (it) {
+                        SocketOptions.Transport.DEFAULT -> return@let null
+                        SocketOptions.Transport.WEBSOCKET -> return@let arrayOf(WebSocket.NAME)
+                        SocketOptions.Transport.POLLING -> return@let arrayOf(Polling.NAME)
+                    }
                 }
-            }
-            query = config?.queryParams?.run {
-                if (size == 0) return@run null
+                query = config?.queryParams?.run {
+                    if (size == 0) return@run null
 
-                val params: List<String> = map { (key, value) -> "$key=$value" }
-                params.joinToString("&")
-            }
-        })
+                    val params: List<String> = map { (key, value) -> "$key=$value" }
+                    params.joinToString("&")
+                }
+            },
+        )
 
         object : SocketBuilder {
             override fun on(event: String, action: Socket.(message: String) -> Unit) {
